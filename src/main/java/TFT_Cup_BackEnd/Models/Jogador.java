@@ -1,11 +1,8 @@
 package TFT_Cup_BackEnd.Models;
 
 import javax.persistence.Entity;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 
 @Entity
@@ -22,20 +19,19 @@ public class Jogador {
     private int Pontuacao;
 
 
-
     public Integer getIdJogador() {
         return idJogador;
     }
 
-    public void setIdJogador(Integer idCargo) {
+    public void setIdJogador(Integer idJogador) {
         this.idJogador = idJogador;
     }
 
-    public String getnick() {
+    public String getNick() {
         return nick;
     }
 
-    public void setnick(String nomeCargo) {
+    public void setNick(String nick) {
         this.nick = nick;
     }
 
@@ -43,7 +39,7 @@ public class Jogador {
         return Pontuacao;
     }
 
-    public void setPontuacao(int salario) {
-        this.Pontuacao = Pontuacao;
+    public void setPontuacao(int pontuacao) {
+        Pontuacao = pontuacao;
     }
 }

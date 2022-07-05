@@ -22,37 +22,36 @@ public class JogadorController {
     JogadorService jogadorService;
 
     @GetMapping("/jogador")
-    public List<Jogador> mostrarTodosClientes() {
-        List<Jogador> clientes = jogadorService.mostrarTodosJogadores();
-        return clientes;
+    public List<Jogador> mostrarTodosJogadores  () {
+        List<Jogador> jogador = jogadorService.mostrarTodosJogadores();
+        return jogador;
     }
 
     @GetMapping("/jogador/{idJogador}")
-    public ResponseEntity<Jogador> mostrarClientePeloId(@PathVariable Integer idCliente) {
-        Jogador cliente = jogadorService.mostrarJogadorPeloId(idCliente);
-        return ResponseEntity.ok().body(cliente);
+    public ResponseEntity<Jogador> mostrarClientePeloId(@PathVariable Integer idJogador) {
+        Jogador jogador = jogadorService.mostrarJogadorPeloId(idJogador);
+        return ResponseEntity.ok().body(jogador);
     }
 
-
     @PostMapping("/jogador")
-    public ResponseEntity<Jogador> cadastrarCliente(@RequestBody Jogador cliente) {
-        cliente = jogadorService.cadastrarJogador(cliente);
+    public ResponseEntity<Jogador> cadastrarJogador(@RequestBody Jogador jogador) {
+        jogador = jogadorService.cadastrarJogador(jogador);
         URI novaUri = ServletUriComponentsBuilder.fromCurrentRequest().path("id")
-                .buildAndExpand(cliente.getIdJogador()).toUri();
-        return ResponseEntity.created(novaUri).body(cliente);
+                .buildAndExpand(jogador.getIdJogador()).toUri();
+        return ResponseEntity.created(novaUri).body(jogador);
     }
 
     @DeleteMapping("jogador/{idJogador}")
-    public ResponseEntity<Void> excluirCliente(@PathVariable Integer idCliente) {
-        jogadorService.excluirJogador(idCliente);
+    public ResponseEntity<Void> excluirJogador(@PathVariable Integer idJogador) {
+        jogadorService.excluirJogador(idJogador);
         return ResponseEntity.noContent().build();
     }
 
     @PutMapping("jogador/{idJogador}")
-    public ResponseEntity<Jogador> editarCliente(@PathVariable Integer idCliente,
-                                                 @RequestBody Jogador cliente) {
-        cliente.setIdJogador(idCliente);
-        jogadorService.editarJogador(cliente);
-        return ResponseEntity.ok().body(cliente);
+    public ResponseEntity<Jogador> editarJogador(@PathVariable Integer idJogador,
+                                                 @RequestBody Jogador jogador) {
+        jogador.setIdJogador(idJogador);
+        jogadorService.editarJogador(jogador);
+        return ResponseEntity.ok().body(jogador);
     }
 }
